@@ -1,7 +1,9 @@
-#copied for eassier use from https://realpython.com/python-advent-of-code/#solving-advent-of-code-with-python for 
+#original template copied for easier use from https://realpython.com/python-advent-of-code/#solving-advent-of-code-with-python f
+#adjusted for personal use
 
-import pathlib
-import sys
+from dotenv import load_dotenv
+import os
+from aocd import get_data
 
 def parse(puzzle_input):
     """Parse input."""
@@ -20,9 +22,14 @@ def solve(puzzle_input):
 
     return solution1, solution2
 
-if __name__ == "__main__":
-    for path in sys.argv[1:]:
-        print(f"{path}:")
-        puzzle_input = pathlib.Path(path).read_text().strip()
-        solutions = solve(puzzle_input)
-        print("\n".join(str(solution) for solution in solutions))
+# Load .env file from the parent directory
+dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
+load_dotenv(dotenv_path)
+
+# # Ensure AOC_SESSION is set correctly
+# session = os.getenv("AOC_SESSION")
+# print(session)
+puzzle_input = get_data(day=1, year=2024)
+print(puzzle_input)
+solutions = solve(puzzle_input)
+print("\n".join(str(solution) for solution in solutions))
