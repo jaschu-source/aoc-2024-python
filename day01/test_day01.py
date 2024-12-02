@@ -1,5 +1,3 @@
-#copied for easier use from https://realpython.com/python-advent-of-code/#solving-advent-of-code-with-python
-
 import pathlib
 import pytest
 import day01 as aoc
