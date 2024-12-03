@@ -11,7 +11,7 @@ def example1():
 
 def test_parse_example1(example1):
     """Test that input is parsed properly."""
-    assert example1 == [['3', '4', '2', '1', '3', '3'], ['4', '3', '5', '3', '9', '3']]
+    assert example1 == [['7', '6', '4', '2', '1'], ['1', '2', '7', '8', '9'], ['9', '7', '6', '2', '1'], ['1', '3', '2', '4', '5'], ['8', '6', '4', '4', '1'], ['1', '3', '6', '7', '9']]
 
 def test_part1_example1(example1):
     """Test part 1 on example input."""

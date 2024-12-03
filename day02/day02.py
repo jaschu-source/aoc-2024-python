@@ -15,18 +15,18 @@ def part1(data):
         line_save = True
         increasing = False
         for index, value in enumerate(line):
-            line_lenght = len(line)
+            line_lenght = len(line) - 1
             if index < line_lenght:
                 next_value = int(line[index + 1])
             if index == 0:
                 increasing = int(value) < next_value
             if increasing and (index < line_lenght):
-                line_save = (int(value) < next_value) and (next_value - int(value) > 0) and (next_value - int(value) != 0)
+                line_save = (int(value) < next_value) and (next_value - int(value) > 0) and (next_value - int(value) <= 3)
             elif not increasing and (index < line_lenght):
-                line_save = (int(value) > next_value) and (int(value) - next_value > 0) and (int(value) - next_value != 0)
+                line_save = (int(value) > next_value) and (int(value) - next_value > 0) and (int(value) - next_value <= 0)
             if not line_save:
                 break
-            if index == line_lenght + 1:
+            if index == line_lenght:
                 result = result + 1
     return result
 
