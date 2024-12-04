@@ -32,12 +32,38 @@ def part1(data):
 
 def part2(data):
     result = 0
-    for right_number in data[0]:
-        count = 0
-        for left_number in data[1]:
-            if right_number == left_number:
-                count = count + 1
-        result = result + int(right_number) * count
+    for line in data:
+        line_save = True
+        increasing = False
+        problem_count = 0
+        last_number_had_problem = False
+
+        for index, value in enumerate(line):
+            if last_number_had_problem:
+                last_number_had_problem = False
+            else:
+                line_lenght = len(line) - 1
+                if index < line_lenght:
+                    next_value = int(line[index + 1])
+
+                if index == 0:
+                    increasing = int(value) < next_value
+
+                if increasing and (index < line_lenght):
+                    line_save = (int(value) < next_value) and (next_value - int(value) > 0) and (next_value - int(value) <= 3)
+                elif (not increasing) and (index < line_lenght):
+                    line_save = ((int(value) > next_value) and (int(value) - next_value > 0) and (int(value) - next_value <= 3))
+                
+                if not line_save:
+                    if problem_count == 0:
+                        problem_count = 1
+                        line_save = True
+                        last_number_had_problem = True
+                    else:
+                        break
+
+                if index == line_lenght:
+                    result = result + 1
     return result
 
 def solve(puzzle_input):
