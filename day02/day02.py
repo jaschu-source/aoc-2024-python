@@ -22,8 +22,8 @@ def part1(data):
                 increasing = int(value) < next_value
             if increasing and (index < line_lenght):
                 line_save = (int(value) < next_value) and (next_value - int(value) > 0) and (next_value - int(value) <= 3)
-            elif not increasing and (index < line_lenght):
-                line_save = (int(value) > next_value) and (int(value) - next_value > 0) and (int(value) - next_value <= 0)
+            elif (not increasing) and (index < line_lenght):
+                line_save = (int(value) > next_value) and (int(value) - next_value > 0) and (int(value) - next_value <= 3)
             if not line_save:
                 break
             if index == line_lenght:
